@@ -1,0 +1,25 @@
+[
+    {
+        "name": "Required",
+        "description": "Essential parameters for running the spatial statistics analysis.",
+        "hidden": false,
+        "parameters": [
+            "input"
+        ]
+    },
+    {
+        "name": "Optional Analysis Parameters",
+        "description": "Parameters to customize the analysis.",
+        "hidden": false,
+        "parameters": [
+            "genes",
+            "samples",
+            "method",
+            "neighbors",
+            "overwrite",
+            "cores",
+            "plot"
+        ]
+    }
+]
+
