@@ -1,24 +1,24 @@
 [
     {
-        "name": "Required",
-        "description": "Essential parameters for running the spatial statistics analysis.",
+        "name": "Autocorrelation Parameters",
+        "description": "Using the spatialGE SThet() function, measure the level of spatial heterogeneity for the selected genes.",
         "hidden": false,
         "parameters": [
-            "input"
-        ]
-    },
-    {
-        "name": "Optional Analysis Parameters",
-        "description": "Parameters to customize the analysis.",
-        "hidden": false,
-        "parameters": [
+            "input",
             "genes",
             "samples",
             "method",
             "neighbors",
             "overwrite",
-            "cores",
             "plot"
+
+        ]
+    },
+    {
+        "name": "Comparing across samples",
+        "description": "Parameters for comparing the apatial heterogeneity estimates across samples using the spatialGE compare_SThet() function",
+        "hidden": false,
+        "parameters": [
         ]
     }
 ]
