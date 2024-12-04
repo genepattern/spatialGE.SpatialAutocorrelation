@@ -19,6 +19,12 @@
         "description": "Parameters for comparing the apatial heterogeneity estimates across samples using the spatialGE compare_SThet() function",
         "hidden": false,
         "parameters": [
+		"samplemeta",
+		"color.by",
+		"categorical",
+		"color.pallette",
+		"point.size"
+
         ]
     }
 ]

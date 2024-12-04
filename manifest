@@ -3,13 +3,13 @@
 JVMLevel=
 LSID=urn:lsid:genepattern.org:module.analysis:00466:999999999
 author=GenePattern Team
-commandLine=Rscript /build/autocorrelation/sthet_wrapper.R --input <input> --genes \"<genes>\" --samples \"<samples>\" --method <method> --neighbors <neighbors> --overwrite <overwrite> --cores <job.cpuCount> --plot <plot.intermediate.results>
+commandLine=Rscript /build/autocorrelation/sthet_wrapper.R   <input>   \"<genes>\"   \"<samples>\"   <method>   <neighbors>   <overwrite> --cores <job.cpuCount>   <plot.intermediate.results> <point.size> <samplemeta> <color.by> <categorical> <color.pallette>
 cpuType=any
 description=This function performs spatial statistics analysis on spatial transcriptomics data using the SThet module.
 documentationUrl=
 fileFormat=rds
 job.cpuCount=
-job.docker.image=genepattern/spatialgp.preprocessing:0.4
+job.docker.image=genepattern/spatialge.autocorrelation:0.1
 src.repo=
 job.memory=
 job.walltime=
@@ -116,7 +116,75 @@ p7_prefix_when_specified=
 p7_type=CHOICE
 p7_value=TRUE;FALSE
 
+p8_MODE=
+p8_TYPE=java.lang.String
+p8_default_value=
+p8_description=A string indicating the name of the variable in the clinical data frame. If NULL, uses sample names
+p8_fileFormat=
+p8_flag=--samplemeta
+p8_name=samplemeta
+p8_numValues=0..1
+p8_optional=on
+p8_prefix=
+p8_prefix_when_specified=
+p8_type=java.lang.String
+p8_value=
 
+p9_MODE=
+p9_TYPE=java.lang.String
+p9_default_value=
+p9_description=The variable in x@spatial_meta used to color points in the plot. If NULL, each sample is assigned a different color
+p9_fileFormat=
+p9_flag=--color_by
+p9_name=color.by
+p9_numValues=0..1
+p9_optional=on
+p9_prefix=
+p9_prefix_when_specified=
+p9_type=java.lang.String
+p9_value=
+
+p10_MODE=
+p10_TYPE=CHOICE
+p10_default_value=TRUE
+p10_description=Logical indicating whether or not to treat color_by as a categorical variable. Default is TRUE
+p10_fileFormat=
+p10_flag=--categorical
+p10_name=categorical
+p10_numValues=1
+p10_optional=
+p10_prefix=
+p10_prefix_when_specified=
+p10_type=CHOICE
+p10_value=TRUE;FALSE
+
+p11_MODE=
+p11_TYPE=java.lang.String
+p11_default_value=muted
+p11_description=A string of a color palette from khroma or RColorBrewer, or a vector with colors with enough elements to plot categories.
+p11_fileFormat=
+p11_flag=--color_pal
+p11_name=color.pallette
+p11_numValues=0..1
+p11_optional=on
+p11_prefix=
+p11_prefix_when_specified=
+p11_type=java.lang.String
+p11_value=
+
+p12_MODE=
+p12_TYPE=java.lang.Double
+p12_default_value=1
+p12_description=A number specifying the size of the points. Passed to the size aesthetic.
+p12_fileFormat=
+p12_flag=--ptsize
+p12_name=point.size
+p12_numValues=0..1
+p12_optional=on
+p12_prefix=
+p12_prefix_when_specified=
+p12_type=java.lang.Double
+p12_value=
 
 
 

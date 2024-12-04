@@ -19,7 +19,18 @@ option_list <- list(
   make_option(c("-c", "--cores"), type="integer", default=NULL,
               help="Number of cores to use during parallelization", metavar="integer"),
   make_option(c("-p", "--plot"), type="logical", default=FALSE,
-              help="Logical indicating if intermediate results should be plotted", metavar="logical")
+              help="Logical indicating if intermediate results should be plotted", metavar="logical"),
+  make_option(c("--samplemeta"), type="character", default=NULL,
+              help="A string indicating the name of the variable in the clinical data frame. If NULL, uses sample names", metavar="character"),
+  make_option(c("--color_by"), type="character", default=NULL,
+              help="The variable in x@spatial_meta used to color points in the plot. If NULL, each sample is assigned a different color", metavar="character"),
+  make_option(c("--categorical"), type="logical", default=TRUE,
+              help="Logical indicating whether or not to treat color_by as a categorical variable. Default is TRUE", metavar="logical"),
+  make_option(c("--color_pal"), type="character", default=NULL,
+              help="A string of a color palette from khroma or RColorBrewer, or a vector with colors with enough elements to plot categories.", metavar="character"),
+  make_option(c("--ptsize"), type="double", default=NULL,
+              help="A number specifying the size of the points. Passed to the size aesthetic.", metavar="double")
+
 )
 
 # Parse command line options
@@ -43,6 +54,22 @@ stlist <- SThet(x=stlist, genes=genes, samples=samples, method=opt$method, k=opt
 if (opt$plot) {
   # Assuming a function plot_intermediate_results exists
   plot_intermediate_results(stlist)
+}
+
+
+plots <- compare_SThet(stlist,
+                   samplemeta=opt$samplemeta,
+                   color_by=opt$color_by,
+                   gene=genes,
+                   color_pal=opt$color_pal,
+                   ptsize=opt$ptsize)
+
+# Save each plot to a PNG file
+for (i in seq_along(plots)) {
+  png_filename <- paste0("plot_", i, ".png")
+  png(png_filename)
+  print(plots[[i]])
+  dev.off()
 }
 
 # Save the modified STList object
