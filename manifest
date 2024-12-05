@@ -3,7 +3,7 @@
 JVMLevel=
 LSID=urn:lsid:genepattern.org:module.analysis:00466:999999999
 author=GenePattern Team
-commandLine=Rscript /spatialGE/sthet_wrapper.R   <stlist.rds.input>   \"<genes>\"   \"<samples>\"   <method>   <neighbors>   <overwrite> --cores <job.cpuCount>  <point.size> <samplemeta> <color.by> <categorical> <color.pallette> <output.filename>
+commandLine=Rscript /spatialGE/sthet_wrapper.R --input  <stlist.rds.input> --genes  \"<genes>\"   <samples> --method  <method> --neighbors  <neighbors>  --overwrite <overwrite> --cores <job.cpuCount> --ptsize <point.size> --samplesmeta <samplemeta> --color_by <color.by> --categorical <categorical> --color_pal <color.pallette> --output_filename <output.filename>
 cpuType=any
 description=This function performs spatial statistics analysis on spatial transcriptomics data using the SThet module.
 documentationUrl=
@@ -49,7 +49,7 @@ p2_value=
 p3_MODE=
 p3_TYPE=java.lang.String
 p3_default_value=
-p3_description=Comma-separated list of sample names or indices to compute statistics. If left blank, all samples are used.
+p3_description=Comma-separated list of sample names or indices to compute statistics. If left blank, all samples are used. Do not include any spaces bretween sample names and commas.
 p3_fileFormat=
 p3_flag=
 p3_name=samples
