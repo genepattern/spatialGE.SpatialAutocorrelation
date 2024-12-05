@@ -4,14 +4,13 @@
         "description": "Using the spatialGE SThet() function, measure the level of spatial heterogeneity for the selected genes.",
         "hidden": false,
         "parameters": [
-            "input",
+            "stlist.rds.input",
+            "output.filename",
             "genes",
             "samples",
             "method",
             "neighbors",
             "overwrite",
-            "plot"
-
         ]
     },
     {

@@ -2,6 +2,8 @@
 library(optparse)
 library(spatialGE)
 
+print("=================== start of sthet_wrapper ====================")
+
 # Define command line options
 option_list <- list(
   make_option(c("-i", "--input"), type="character", default=NULL,
@@ -10,6 +12,8 @@ option_list <- list(
               help="Comma-separated list of gene names to compute statistics", metavar="character"),
   make_option(c("-s", "--samples"), type="character", default=NULL,
               help="Comma-separated list of sample names or indices to compute statistics", metavar="character"),
+  make_option(c("-O", "--output_filename"), type="character", default=NULL,
+              help="Prefix for all output filenames", metavar="character"),
   make_option(c("-m", "--method"), type="character", default="moran",
               help="Spatial statistic(s) to estimate: 'moran', 'geary', or both", metavar="character"),
   make_option(c("-k", "--neighbors"), type="integer", default=NULL,
@@ -18,8 +22,6 @@ option_list <- list(
               help="Logical indicating if previous statistics should be overwritten", metavar="logical"),
   make_option(c("-c", "--cores"), type="integer", default=NULL,
               help="Number of cores to use during parallelization", metavar="integer"),
-  make_option(c("-p", "--plot"), type="logical", default=FALSE,
-              help="Logical indicating if intermediate results should be plotted", metavar="logical"),
   make_option(c("--samplemeta"), type="character", default=NULL,
               help="A string indicating the name of the variable in the clinical data frame. If NULL, uses sample names", metavar="character"),
   make_option(c("--color_by"), type="character", default=NULL,
@@ -33,6 +35,8 @@ option_list <- list(
 
 )
 
+print("========= commandline parsed ===========")
+
 # Parse command line options
 opt_parser <- OptionParser(option_list=option_list)
 opt <- parse_args(opt_parser)
@@ -43,6 +47,8 @@ if (is.null(opt$input)) {
 }
 stlist <- readRDS(opt$input)
 
+print("========== data loaded ===============")
+
 # Convert genes and samples from comma-separated strings to vectors
 genes <- if (!is.null(opt$genes)) unlist(strsplit(opt$genes, ",")) else NULL
 samples <- if (!is.null(opt$samples)) unlist(strsplit(opt$samples, ",")) else NULL
@@ -50,12 +56,7 @@ samples <- if (!is.null(opt$samples)) unlist(strsplit(opt$samples, ",")) else NU
 # Run the SThet function
 stlist <- SThet(x=stlist, genes=genes, samples=samples, method=opt$method, k=opt$neighbors, overwrite=opt$overwrite, cores=opt$cores)
 
-# Optionally plot intermediate results
-if (opt$plot) {
-  # Assuming a function plot_intermediate_results exists
-  plot_intermediate_results(stlist)
-}
-
+print("=========== sthet finished ===============")
 
 plots <- compare_SThet(stlist,
                    samplemeta=opt$samplemeta,
@@ -64,13 +65,17 @@ plots <- compare_SThet(stlist,
                    color_pal=opt$color_pal,
                    ptsize=opt$ptsize)
 
-# Save each plot to a PNG file
-for (i in seq_along(plots)) {
-  png_filename <- paste0("plot_", i, ".png")
-  png(png_filename)
-  print(plots[[i]])
-  dev.off()
-}
+print("=========== COMPARE_sthet finished ===============")
+
+png_filename <- paste0(opt$output_filename, "_compare_sthet.png" )
+
+png(png_filename)
+print(plots)
+dev.off()
 
 # Save the modified STList object
-saveRDS(stlist, file="output_stlist.rds")
+rds_filename <- paste0(opt$output_filename, "_sthet.rds" )
+
+saveRDS(stlist, file=rds_filename
+
+print(" ======== DONE ========================")
