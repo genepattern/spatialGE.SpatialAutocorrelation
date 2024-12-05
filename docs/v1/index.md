@@ -1,4 +1,4 @@
-**Spatial Autocorrelation Analysis Tool**
+**spatialGE.SpatialAutocorrelation**
 =====================================
 
 **Description**
@@ -6,12 +6,16 @@
 
 This tool performs spatial autocorrelation analysis on bioinformatics data using the Moran and Geary statistics. It provides a flexible and customizable way to compute and visualize spatial autocorrelation statistics for a given set of genes and samples.
 
+The calculation of spatial statistics with the SThet function of spatialge and and multi-sample comparison with compare_SThet provides and easy way to identify samples and genes exhibiting spatial patterns. 
+
 **Module Details**
 -----------------
 
-* **Authors**: Edwin Huang
-* **Categories**: sthet
-* **Source Repo**: https://github.com/FridleyLab/spatialGE
+* **Authors**: Fridley Lab of the Moffit Cancer Center
+* **Adapted as a GenePattern Module by:** Ted Liefeld (jliefeld@cloud.ucsd.edu)
+* **Categories**: spatial transcriptomics
+* **Source Repo**: [https://github.com/FridleyLab/spatialGE]([https://github.com/genepattern/spatialGE.SpatialAutocorrelation](https://github.com/FridleyLab/spatialGE))
+* **Module Source Repo**:  [https://github.com/genepattern/spatialGE.SpatialAutocorrelation](https://github.com/genepattern/spatialGE.SpatialAutocorrelation)
 * **Contact**: [edh021@cloud.ucsd.edu](mailto:edh021@cloud.ucsd.edu)
 
 **Input Files**
@@ -44,11 +48,4 @@ This tool performs spatial autocorrelation analysis on bioinformatics data using
 | `-cp`, `--color_pal` | Color palette | "muted" | Character |
 | `-ps`, `--ptsize` | Point size | 1 | Numeric |
 
-**Example Usage**
------------------
-
-To run the tool, save the script to a file (e.g., `spatial_ge_wrapper.R`) and then run it from the command line using the following command:
-```r
-Rscript spatial_ge_wrapper.R -i input.rds -g gene1,gene2 -s sample1,sample2 -m both -k 10 -o -c 4 -p -sm samplemeta -cb color_by -cp muted -ps 2
-```
-Replace the input file `input.rds` and the gene and sample names with your own data. The other options can be adjusted as needed.
+*
