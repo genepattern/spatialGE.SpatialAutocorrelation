@@ -67,12 +67,12 @@ p4_description=Spatial statistic(s) to estimate: 'moran', 'geary', or both
 p4_fileFormat=
 p4_flag=--method
 p4_name=method
-p4_numValues=0..2
+p4_numValues=1..1
 p4_optional=
 p4_prefix=
 p4_prefix_when_specified=
 p4_type=CHOICE
-p4_value=moran;geary
+p4_value=moran;geary;both
 
 p5_MODE=
 p5_TYPE=Integer
