@@ -20,7 +20,9 @@ The calculation of spatial statistics uses the SThet function of spatialGE and t
 
 ## Methodology
 
-Refer to the <a href="https://fridleylab.github.io/spatialGE/index.html">Fridely lab documentation for SpatialGE</a>.
+Refer to the <a href="https://fridleylab.github.io/spatialGE/index.html">Fridely lab documentation for SpatialGE</a> for original details of the method.
+
+In order to explore the relationship between spatial heterogeneity and phenotypic or clinical data, spatialGE implemented the estimation of two autocorrelation [Moran’s I (Moran, 1950) and Geary’s C (Geary, 1954)] methods using the R package spdep (Bivand, et al., 2011). Positive autocorrelation is indicated is by a high Moran’s I (Imax=1) and low Geary’s C (Cmin=0). When positive autocorrelation is observed in the context of ST, nearby spots tend to be similar in expression of a given gene. In other words, spots with high expression of a gene are near other spots with high expression, and spots with low expression of a gene are near other spots with low expression. When Moran’s I nears zero, and Geary’s C nears 1, gene expression within an ST slice is randomly distributed and compartmentalization of gene expression is not evident. Thus, Moran’s I and Geary’s C provide a measure of spatial uniformity in gene expression, and detection of transcriptionally divergent regions within a tissue.
 
 ## References
 
