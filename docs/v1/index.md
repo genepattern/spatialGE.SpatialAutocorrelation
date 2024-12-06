@@ -68,7 +68,8 @@ Ospina, O. E., Wilson C. M., Soupir, A. C., Berglund, A. Smalley, I., Tsai, K. Y
 ## Output Files
 
 * **rds file**: An updated version of the STList object provided as input, with spatial autocorrelation statistics added.
-* **multi-sample comparison plot(s)**: Plot(s) of the samplemeta versus the calculated statitsics for the named genes
+* **multi-sample comparison plot(s)**: Plot(s) of the samplemeta versus the calculated statitsics for the named genes.
+  <img src="./archive_name_compare_sthet.png"/>
 
 ## Version Comments
 
