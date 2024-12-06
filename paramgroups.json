@@ -1,6 +1,6 @@
 [
     {
-        "name": "Autocorrelation Parameters",
+        "name": "Spatial Autocorrelation Parameters",
         "description": "Using the spatialGE SThet() function, measure the level of spatial heterogeneity for the selected genes.",
         "hidden": false,
         "parameters": [
@@ -14,8 +14,8 @@
         ]
     },
     {
-        "name": "Comparing across samples",
-        "description": "Parameters for comparing the apatial heterogeneity estimates across samples using the spatialGE compare_SThet() function",
+        "name": "Sample Comparison Parameters",
+        "description": "Parameters for comparing the spatial heterogeneity estimates across samples using the spatialGE compare_SThet() function",
         "hidden": false,
         "parameters": [
 		"samplemeta",
