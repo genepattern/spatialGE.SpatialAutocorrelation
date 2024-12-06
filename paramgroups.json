@@ -9,7 +9,7 @@
             "genes",
             "samples",
             "method",
-            "neighbors",
+            "num.neighbors",
             "overwrite",
         ]
     },
@@ -19,8 +19,8 @@
         "hidden": false,
         "parameters": [
 		"samplemeta",
+                "categorical",
 		"color.by",
-		"categorical",
 		"color.pallette",
 		"point.size"
 

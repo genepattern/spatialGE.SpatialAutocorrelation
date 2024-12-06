@@ -2,8 +2,6 @@
 library(optparse)
 library(spatialGE)
 
-print("=================== start of sthet_wrapper ====================")
-
 # Define command line options
 option_list <- list(
   make_option(c("-i", "--input"), type="character", default=NULL,
@@ -35,7 +33,6 @@ option_list <- list(
 
 )
 
-print("========= commandline parsed ===========")
 
 # Parse command line options
 opt_parser <- OptionParser(option_list=option_list)
@@ -47,7 +44,6 @@ if (is.null(opt$input)) {
 }
 stlist <- readRDS(opt$input)
 
-print("========== data loaded ===============")
 
 # Convert genes and samples from comma-separated strings to vectors
 genes <- if (!is.null(opt$genes)) unlist(strsplit(opt$genes, ",")) else NULL
@@ -57,6 +53,12 @@ samples <- if (!is.null(opt$samples)) unlist(strsplit(opt$samples, ",")) else NU
 stlist <- SThet(x=stlist, genes=genes, samples=samples, method=opt$method, k=opt$neighbors, overwrite=opt$overwrite, cores=opt$cores)
 
 print("=========== sthet finished ===============")
+print(paste(" samplemeta-- ", opt$samplemeta))
+print(paste(" color_by-- ", opt$color_by))
+print(paste(" genes-- ", genes))
+print(paste(" color_pal-- ", opt$color_pal))
+print(paste(" ptsize-- ", opt$ptsize))
+
 
 plots <- compare_SThet(stlist,
                    samplemeta=opt$samplemeta,
@@ -69,6 +71,9 @@ print("=========== COMPARE_sthet finished ===============")
 
 png_filename <- paste0(opt$output_filename, "_compare_sthet.png" )
 
+
+
+print(paste("========== plotting ===============", png_filename))
 png(png_filename)
 print(plots)
 dev.off()
@@ -76,6 +81,6 @@ dev.off()
 # Save the modified STList object
 rds_filename <- paste0(opt$output_filename, "_sthet.rds" )
 
-saveRDS(stlist, file=rds_filename
+saveRDS(stlist, file=rds_filename)
 
 print(" ======== DONE ========================")
