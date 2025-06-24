@@ -60,12 +60,20 @@ print(paste(" color_pal-- ", opt$color_pal))
 print(paste(" ptsize-- ", opt$ptsize))
 
 
-plots <- compare_SThet(stlist,
-                   samplemeta=opt$samplemeta,
-                   color_by=opt$color_by,
-                   gene=genes,
-                   color_pal=opt$color_pal,
-                   ptsize=opt$ptsize)
+# Build argument list
+args <- list(
+  x = stlist,
+  gene = genes
+)
+
+# Add optional parameters only if they are not NULL
+if (!is.null(opt$samplemeta)) args$samplemeta <- opt$samplemeta
+if (!is.null(opt$color_by)) args$color_by <- opt$color_by
+if (!is.null(opt$color_pal)) args$color_pal <- opt$color_pal
+if (!is.null(opt$ptsize)) args$ptsize <- opt$ptsize
+
+# Call compare_SThet only with valid arguments
+plots <- do.call(compare_SThet, args)
 
 print("=========== COMPARE_sthet finished ===============")
 
